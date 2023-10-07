@@ -1,0 +1,6 @@
+---
+const format = new Intl.DateTimeFormat("en", { dateStyle: "medium" });
+const { value } = Astro.props;
+---
+
+<span>{format.format(value)}</span>

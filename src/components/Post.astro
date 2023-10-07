@@ -1,0 +1,13 @@
+---
+import Datetime from '../components/datetime.astro'
+
+type Props = CollectionEntry<"blog">;
+
+const { post } = Astro.props;
+---
+
+<a href={`/blog/${post.slug}`} class="inline-block text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0">
+  <h2>{post.data.title}</h2>
+</a>
+<p><Datetime datetime={post.data.pubDate} /></p>
+<p>{post.data.summary}</p>
