@@ -3,20 +3,22 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import Post from "../components/Post.astro";
 
-const posts = await getCollection("blog");
+const posts = await getCollection("blog", ({ data }) => !data.draft);
 ---
 
-<Layout>
-  <main id="main-content">
-    <h1 class="text-2xl">Hello, World!</h1>
-    <ul>
-      {
-        posts.map((post) => (
-          <li style={`viewTransitionName: ${post.slug}`} class="my-6">
-            <Post post={post} />
-          </li>
-        ))
-      }
-    </ul>
-  </main>
+<Layout title="Home">
+  <h1 class="text-2xl">derkoe.dev</h1>
+  <div>
+    <p class="text-xl">👋 Hi! My name is Christian Köberl.</p>
+    <p>Welcome to my personal homepage!</p>
+  </div>
+  <ul>
+    {
+      posts.map((post) => (
+        <li style={`viewTransitionName: ${post.slug}`} class="my-6">
+          <Post post={post} />
+        </li>
+      ))
+    }
+  </ul>
 </Layout>

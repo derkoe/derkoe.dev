@@ -1,9 +1,11 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import { SITE } from "../config";
+import Footer from "../components/Footer.astro";
+import "../styles/base.css";
 
 export interface Props {
-  title?: string;
+  title: string;
   author?: string;
   description?: string;
   ogImage?: string;
@@ -11,12 +13,14 @@ export interface Props {
 }
 
 const {
-  title = SITE.title,
+  title,
   author = SITE.author,
   description = SITE.desc,
   ogImage = SITE.ogImage,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 } = Astro.props;
+
+const fullTitle = `${title} | ${SITE.title}`;
 
 const socialImageURL = new URL(
   ogImage ?? SITE.ogImage ?? "og.png",
@@ -29,19 +33,27 @@ const socialImageURL = new URL(
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/android-icon-192x192.png"
+    />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="canonical" href={canonicalURL} />
-    <meta name="generator" content={Astro.generator} />
+    <meta name="generator" content="Astro" />
 
     <!-- General Meta Tags -->
-    <title>{title}</title>
-    <meta name="title" content={title} />
+    <title>{fullTitle}</title>
+    <meta name="title" content={fullTitle} />
     <meta name="description" content={description} />
     <meta name="author" content={author} />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={socialImageURL} />
@@ -49,7 +61,7 @@ const socialImageURL = new URL(
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
+    <meta property="twitter:title" content={fullTitle} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
 
@@ -60,6 +72,10 @@ const socialImageURL = new URL(
     <script is:inline src="/toggle-theme.js"></script>
   </head>
   <body>
-    <slot />
+    <header></header>
+    <main class="max-w-4xl m-auto">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>

@@ -3,7 +3,7 @@ categories: ["WSL"]
 tags: ["linux", "windows", "wsl"]
 pubDate: 2020-05-25T00:00:00Z
 title: "Development Environment in WSL2"
-summary: "TODO"
+description: "TODO"
 image: "/windows-linux.jpg"
 author: Christian Köberl
 ---
