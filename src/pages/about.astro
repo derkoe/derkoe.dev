@@ -1,0 +1,97 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import derkoeLaughing from "../assets/derkoe-laughing.jpg";
+---
+
+<Layout title="About Me - Christian Köberl">
+  <div class="about-container">
+    <Image
+      src={derkoeLaughing}
+      alt="Christian Köberl laughing"
+      class="about-image"
+    />
+
+    <div class="about-content">
+      <h1>About Me</h1>
+      <p>
+        Hi, I'm Christian Köberl, a passionate software developer with years of
+        experience in building web applications and distributed systems.
+      </p>
+
+      <h2>My Journey</h2>
+      <p>
+        I've been working in software development for many years, focusing on
+        creating efficient and scalable solutions. I'm particularly interested
+        in cloud technologies, DevOps practices, and modern web development.
+      </p>
+
+      <h2>Skills & Expertise</h2>
+      <ul>
+        <li>Full-stack Web Development</li>
+        <li>Cloud Technologies</li>
+        <li>DevOps & CI/CD</li>
+        <li>Software Architecture</li>
+      </ul>
+
+      <h2>Get in Touch</h2>
+      <p>
+        Feel free to reach out to me through my social media profiles or via
+        email.
+      </p>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  .about-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 2rem;
+    display: block;
+  }
+
+  .about-content {
+    background: var(--background-body);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    color: var(--accent);
+    margin-top: 0;
+  }
+
+  h2 {
+    color: var(--accent);
+    margin-top: 2rem;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  li:last-child {
+    border-bottom: none;
+  }
+
+  p {
+    line-height: 1.6;
+    color: var(--text);
+  }
+</style>

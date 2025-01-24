@@ -1,0 +1,150 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"blog">;
+
+const post = Astro.props;
+const { Content } = await post.render();
+
+const formattedDate = post.data.pubDate.toLocaleDateString("en-us", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<Layout title={post.data.title}>
+  <article class="blog-post">
+    {post.data.image && <img src={post.data.image} alt="" class="hero-image" />}
+    <div class="post-header">
+      <h1>{post.data.title}</h1>
+      <div class="post-meta">
+        <time datetime={post.data.pubDate.toISOString()}>
+          {formattedDate}
+        </time>
+        {
+          post.data.updatedDate && (
+            <div class="last-updated-on">
+              Last updated on{" "}
+              {post.data.updatedDate.toLocaleDateString("en-us", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </div>
+          )
+        }
+      </div>
+    </div>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .blog-post {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+
+  .post-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .post-meta {
+    margin-top: 0.5rem;
+    color: var(--text-light);
+  }
+
+  .last-updated-on {
+    font-style: italic;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--accent);
+  }
+
+  .prose {
+    line-height: 1.8;
+    color: var(--text);
+  }
+
+  .prose :global(h2) {
+    color: var(--accent);
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .prose :global(p) {
+    margin-bottom: 1.5rem;
+  }
+
+  .prose :global(pre) {
+    background-color: var(--background-body);
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  .prose :global(code) {
+    background-color: var(--background-body);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  .prose :global(a) {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .prose :global(a:hover) {
+    text-decoration: underline;
+  }
+
+  .prose :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 2rem 0;
+  }
+
+  .prose :global(blockquote) {
+    border-left: 4px solid var(--accent);
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+    font-style: italic;
+  }
+
+  .prose :global(ul),
+  .prose :global(ol) {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .prose :global(li) {
+    margin: 0.5rem 0;
+  }
+</style>

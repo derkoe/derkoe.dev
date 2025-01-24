@@ -1,11 +1,113 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import derkoeLaughing from "../assets/derkoe-laughing.jpg";
+import { Image } from "astro:assets";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const posts = await getCollection("blog");
+posts.sort((a, b) => b.data.pubDate?.valueOf() - a.data.pubDate?.valueOf());
 ---
 
 <Layout>
-	<Welcome />
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Hi, my name is Kö!</h1>
+      <p>
+        Hi! I'm Christian Köberl, a software developer passionate about
+        technology and innovation.
+      </p>
+    </div>
+    <Image
+      src={derkoeLaughing}
+      alt="Christian Köberl laughing"
+      class="profile-image"
+      width={400}
+      height={600}
+    />
+  </div>
+
+  <section class="blog-preview">
+    <h2>Latest Blog Posts</h2>
+    <div class="post-grid">
+      {
+        posts.map(post => (
+          <article class="post-card">
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+            <a href={`/blog/${post.slug}`} class="read-more">
+              Read more →
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-text {
+    text-align: center;
+    padding: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      flex-direction: row;
+    }
+  }
+
+  .profile-image {
+    border-radius: 5%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin: 0.5rem 0;
+  }
+
+  .blog-preview {
+    margin-top: 3rem;
+  }
+
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .post-card {
+    background: var(--background-body);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .post-card h3 {
+    margin: 0;
+    color: var(--accent);
+  }
+
+  .post-card p {
+    margin: 1rem 0;
+    color: var(--text);
+  }
+
+  .read-more {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .read-more:hover {
+    color: var(--accent);
+  }
+</style>

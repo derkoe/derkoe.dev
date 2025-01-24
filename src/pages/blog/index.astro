@@ -1,0 +1,100 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const posts = await getCollection("blog");
+posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout title="Blog - Christian Köberl">
+  <div class="blog-index">
+    <h1>Blog Posts</h1>
+    <div class="posts">
+      {
+        posts.map(post => (
+          <article class="post-preview">
+            <a href={`/blog/${post.slug}`}>
+              {post.data.image && (
+                <img src={post.data.image} alt="" class="post-image" />
+              )}
+              <div class="post-content">
+                <h2>{post.data.title}</h2>
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {post.data.pubDate.toLocaleDateString("en-us", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+                <p>{post.data.description}</p>
+              </div>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .blog-index {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 2rem;
+  }
+
+  .posts {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .post-preview {
+    background: var(--background-body);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .post-preview:hover {
+    transform: translateY(-4px);
+  }
+
+  .post-preview a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .post-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .post-content {
+    padding: 1.5rem;
+  }
+
+  .post-content h2 {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-content time {
+    color: var(--text-light);
+    font-size: 0.9rem;
+  }
+
+  .post-content p {
+    margin-top: 1rem;
+    color: var(--text);
+    line-height: 1.6;
+  }
+</style>
