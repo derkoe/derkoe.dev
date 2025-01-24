@@ -101,18 +101,30 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-us", {
   }
 
   .prose :global(pre) {
-    background-color: var(--background-body);
+    background-color: #1a1a1a;
     padding: 1.5rem;
     border-radius: 8px;
     overflow-x: auto;
     margin: 1.5rem 0;
+    color: #fff;
   }
 
   .prose :global(code) {
-    background-color: var(--background-body);
+    background-color: #f0f0f0;
     padding: 0.2em 0.4em;
     border-radius: 4px;
     font-size: 0.9em;
+    color: var(--text);
+  }
+
+  :global(.dark) .prose :global(code) {
+    background-color: #2a2a2a;
+  }
+
+  .prose :global(pre code) {
+    background-color: transparent;
+    padding: 0;
+    color: inherit;
   }
 
   .prose :global(a) {

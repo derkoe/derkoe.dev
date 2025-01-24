@@ -1,15 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import derkoeLaughing from "../assets/derkoe-laughing.jpg";
+import derkoeSquare from "../assets/derkoe-square.jpg";
 ---
 
 <Layout title="About Me - Christian Köberl">
   <div class="about-container">
     <Image
-      src={derkoeLaughing}
+      src={derkoeSquare}
       alt="Christian Köberl laughing"
       class="about-image"
+      width={500}
+      height={500}
     />
 
     <div class="about-content">
