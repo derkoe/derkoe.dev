@@ -1,0 +1,50 @@
+---
+import { socialLinks } from "../config";
+---
+
+<div class="social-links">
+  {
+    socialLinks.map((link) => (
+      <a
+        href={link.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+        title={link.name}
+      >
+        <Fragment set:html={link.icon} />
+        <span class="sr-only">{link.name}</span>
+      </a>
+    ))
+  }
+</div>
+
+<style>
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .social-link {
+    color: var(--text-light);
+    transition: color 0.2s;
+  }
+
+  .social-link:hover {
+    color: var(--accent);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>

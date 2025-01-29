@@ -5,6 +5,7 @@ interface Props {
 
 const { title = "Christian Köberl's Blog" } = Astro.props;
 import ThemeToggle from "../components/ThemeToggle.astro";
+import SocialLinks from "../components/SocialLinks.astro";
 ---
 
 <!doctype html>
@@ -51,8 +52,9 @@ import ThemeToggle from "../components/ThemeToggle.astro";
       <slot />
     </main>
     <footer>
+      <SocialLinks />
       <p>
-        &copy; {new Date().getFullYear()} Christian Köberl. All rights reserved.
+        &copy; 2012-{new Date().getFullYear()} Christian Köberl. All rights reserved.
       </p>
     </footer>
   </body>
@@ -142,10 +144,15 @@ import ThemeToggle from "../components/ThemeToggle.astro";
   }
 
   footer {
-    text-align: center;
-    padding: 2rem;
     background: var(--background-body);
-    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    margin-top: auto;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  footer p {
+    margin: 1rem 0 0;
     color: var(--text-light);
   }
 </style>

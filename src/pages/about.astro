@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import derkoeSquare from "../assets/derkoe-square.jpg";
+import { socialLinks } from "../config";
 ---
 
 <Layout title="About Me - Christian Köberl">
@@ -17,8 +18,9 @@ import derkoeSquare from "../assets/derkoe-square.jpg";
     <div class="about-content">
       <h1>About Me</h1>
       <p>
-        Hi, I'm Christian Köberl, a passionate software developer with years of
-        experience in building web applications and distributed systems.
+        Hi, I'm Christian Köberl, a passionate software developer with &gt; 25
+        years of experience in building web applications and distributed
+        systems.
       </p>
 
       <h2>My Journey</h2>
@@ -39,7 +41,18 @@ import derkoeSquare from "../assets/derkoe-square.jpg";
       <h2>Get in Touch</h2>
       <p>
         Feel free to reach out to me through my social media profiles or via
-        email.
+        email:
+        <ul class="social-links">
+          {
+            socialLinks.map(link => (
+              <li>
+                <a href={link.url} target="_blank" rel="noopener noreferrer">
+                  <span>{link.name}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
       </p>
     </div>
   </div>
@@ -78,14 +91,8 @@ import derkoeSquare from "../assets/derkoe-square.jpg";
     margin-top: 2rem;
   }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
   li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid var(--border);
+    padding: 0.4rem 0;
   }
 
   li:last-child {
