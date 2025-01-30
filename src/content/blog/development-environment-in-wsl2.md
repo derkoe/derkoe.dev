@@ -3,7 +3,7 @@ categories: ["WSL"]
 tags: ["linux", "windows", "wsl"]
 pubDate: "2020-05-25"
 title: "Development Environment in WSL2"
-description: "x"
+description: "This guide details setting up a WSL2 development environment with Ubuntu on Windows 10, including installation steps and addressing GUI app support challenges."
 image: "/windows-linux.jpg"
 author: Christian Köberl
 ---
