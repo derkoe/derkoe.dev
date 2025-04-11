@@ -44,6 +44,7 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-us", {
         }
       </div>
     </div>
+    <div class="post-summary">{post.data.summary}</div>
     <div class="prose">
       <Content />
     </div>
@@ -72,6 +73,12 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-us", {
   .post-meta {
     margin-top: 0.5rem;
     color: var(--text-light);
+  }
+
+  .post-summary {
+    margin: 1.5rem 0;
+    font-size: 1.2rem;
+    color: var(--text);
   }
 
   .last-updated-on {

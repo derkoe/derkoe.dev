@@ -53,7 +53,7 @@ posts.sort((a, b) => b.data.pubDate?.valueOf() - a.data.pubDate?.valueOf());
         posts.map(post => (
           <article class="post-card">
             <h3>{post.data.title}</h3>
-            <p>{post.data.description}</p>
+            <p>{post.data.summary}</p>
             <a href={`/blog/${post.slug}`} class="read-more">
               Read more →
             </a>

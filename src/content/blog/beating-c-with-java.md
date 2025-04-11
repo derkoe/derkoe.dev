@@ -3,7 +3,7 @@ tags: ["java", "linux"]
 pubDate: "2020-06-29"
 title: "Beating C with 33 Lines of Java"
 author: Christian Köberl
-description: Writing a faster word count (wc) in Java and learing about the GraalVM.
+summary: Writing a faster word count (wc) in Java and learing about the GraalVM.
 image: "/beating-c-with-java.jpg"
 ---
 
