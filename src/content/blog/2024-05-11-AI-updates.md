@@ -20,7 +20,7 @@ Currently, it is only available in ChatGPT, but the API is expected to follow in
 
 ## AI 2027 - A Scenario of AI's Future
 
-The AI Futures Project has published a scenario (or essay) on the future of AI from now until 2030. The main author is well known to [predict the AI future very well](https://www.alignmentforum.org/posts/6Xgy6CAf2jqHhynHL/what-2026-looks-like) and the project even offer bounties for better future predictions. There is also a summary: https://ai-2027.com/summary
+The AI Futures Project has published a scenario (or essay) on the future of AI from now until 2030. The main author is well known to [predict the AI future very well](https://www.alignmentforum.org/posts/6Xgy6CAf2jqHhynHL/what-2026-looks-like) and the project even offer bounties for better future predictions.
 
 You can find the full scenario here: [AI 2027](https://ai-2027.com/)  
 For a summary, visit: [AI 2027 Summary](https://ai-2027.com/summary)
