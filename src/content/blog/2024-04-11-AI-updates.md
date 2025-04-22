@@ -1,9 +1,10 @@
 ---
 tags: ["ai"]
-pubDate: "2025-05-11"
-title: "AI Updates - Week 15 / 2025"
+pubDate: "2025-04-11"
+title: "AI Updates - April 2025"
 author: Christian Köberl
 summary: "OpenAI's new image generation model, AI 2027 - a scenario of AI future, data protection in AI tools, and Meta's Llama 4 launch."
+image: "/robots.jpg"
 ---
 
 ## GPT-4o Image Generation

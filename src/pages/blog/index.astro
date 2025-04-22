@@ -12,8 +12,8 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
     <div class="posts">
       {
         posts.map(post => (
-          <article class="post-preview">
-            <a href={`/blog/${post.slug}`}>
+          <a href={`/blog/${post.slug}`} class="post-preview">
+            <article>
               {post.data.image && (
                 <img src={post.data.image} alt="" class="post-image" />
               )}
@@ -28,8 +28,8 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
                 </time>
                 <p>{post.data.summary}</p>
               </div>
-            </a>
-          </article>
+            </article>
+          </a>
         ))
       }
     </div>
@@ -56,16 +56,16 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
     background: var(--background-body);
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   .post-preview:hover {
     transform: translateY(-4px);
-  }
-
-  .post-preview a {
-    text-decoration: none;
-    color: inherit;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 
   .post-image {
