@@ -51,13 +51,13 @@ posts.sort((a, b) => b.data.pubDate?.valueOf() - a.data.pubDate?.valueOf());
     <div class="post-grid">
       {
         posts.map(post => (
-          <article class="post-card">
-            <h3>{post.data.title}</h3>
-            <p>{post.data.summary}</p>
-            <a href={`/blog/${post.slug}`} class="read-more">
-              Read more →
-            </a>
-          </article>
+          <a href={`/blog/${post.slug}`} class="post-card">
+            <article>
+              <h3>{post.data.title}</h3>
+              <p>{post.data.summary}</p>
+              <span class="read-more">Read more →</span>
+            </article>
+          </a>
         ))
       }
     </div>
@@ -166,6 +166,22 @@ posts.sort((a, b) => b.data.pubDate?.valueOf() - a.data.pubDate?.valueOf());
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    display: block;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+  }
+
+  .post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .post-card article {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .post-card h3 {
@@ -176,6 +192,7 @@ posts.sort((a, b) => b.data.pubDate?.valueOf() - a.data.pubDate?.valueOf());
   .post-card p {
     margin: 1rem 0;
     color: var(--text);
+    flex-grow: 1;
   }
 
   .read-more {
