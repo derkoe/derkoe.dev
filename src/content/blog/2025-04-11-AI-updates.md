@@ -4,7 +4,7 @@ pubDate: "2025-04-11"
 title: "AI Updates - April 2025"
 author: Christian Köberl
 summary: "OpenAI's new image generation model, AI 2027 - a scenario of AI future, data protection in AI tools, and Meta's Llama 4 launch."
-image: "/robots.jpg"
+image: "./images/robots.jpg"
 ---
 
 ## GPT-4o Image Generation
@@ -12,9 +12,9 @@ image: "/robots.jpg"
 Two weeks ago, OpenAI launched their new image generation model, and it is truly impressive! Everyone is creating Ghibli-style avatars and action figures for their profiles. The standout feature of this model is its ability to generate highly realistic images with accurate text 🎉.
 
 Here is an example I created with the prompt:  
-*"Generate an image of a 2021 Skoda Octavia Combi in dark blue with a transparent background"*:
+_"Generate an image of a 2021 Skoda Octavia Combi in dark blue with a transparent background"_:
 
-![Skoda Octavia Combi](/skoda-octavia.png "Generated image of a 2021 Skoda Octavia Combi")
+![Skoda Octavia Combi](./images/skoda-octavia.png "Generated image of a 2021 Skoda Octavia Combi")
 
 Currently, it is only available in ChatGPT, but the API is expected to follow in a few weeks.  
 [Learn more about GPT-4o Image Generation](https://openai.com/index/introducing-4o-image-generation/)
