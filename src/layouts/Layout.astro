@@ -26,12 +26,16 @@ import SocialLinks from "../components/SocialLinks.astro";
         ) {
           return localStorage.getItem("theme");
         }
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          return "dark";
-        }
-        return "light";
+        return "system";
       })();
-      if (theme === "dark") document.documentElement.classList.add("dark");
+
+      if (
+        theme === "dark" ||
+        (theme === "system" &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      }
     </script>
   </head>
   <body>
@@ -138,7 +142,7 @@ import SocialLinks from "../components/SocialLinks.astro";
     text-decoration: none;
     padding: 0.5rem 1rem;
   }
-  
+
   main {
     flex: 1;
     padding: 2rem;
