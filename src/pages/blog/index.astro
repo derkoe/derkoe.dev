@@ -12,30 +12,28 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
     <h1>Blog Posts</h1>
     <div class="posts">
       {
-        posts.map(post => (
-          <a href={`/blog/${post.slug}`} class="post-preview">
-            <article>
-              {post.data.image && (
-                <Image
-                  src={import(`../../content/blog/${post.data.image}`)}
-                  alt=""
-                  class="post-image"
-                />
-              )}
-              <div class="post-content">
-                <h2>{post.data.title}</h2>
-                <time datetime={post.data.pubDate.toISOString()}>
-                  {post.data.pubDate.toLocaleDateString("en-us", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </time>
-                <p>{post.data.summary}</p>
-              </div>
-            </article>
-          </a>
-        ))
+        posts.map(post => {
+          return (
+            <a href={`/blog/${post.slug}`} class="post-preview">
+              <article>
+                {post.data.image && (
+                  <Image src={post.data.image} alt="" class="post-image" />
+                )}
+                <div class="post-content">
+                  <h2>{post.data.title}</h2>
+                  <time datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString("en-us", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </time>
+                  <p>{post.data.summary}</p>
+                </div>
+              </article>
+            </a>
+          );
+        })
       }
     </div>
   </div>

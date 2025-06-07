@@ -26,11 +26,7 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-us", {
   <article class="blog-post">
     {
       post.data.image && (
-        <Image
-          src={import(`../../content/blog/${post.data.image}`)}
-          alt=""
-          class="hero-image"
-        />
+        <Image src={post.data.image} alt="" class="hero-image" />
       )
     }
     <div class="post-header">
@@ -62,7 +58,6 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-us", {
 
 <style>
   .blog-post {
-    max-width: 800px;
     margin: 0 auto;
     padding: 0 1rem;
   }
