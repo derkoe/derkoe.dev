@@ -3,7 +3,7 @@ tags: ["ai"]
 pubDate: "2025-04-22"
 title: "AI Updates - April 2025 - 2nd Edition"
 author: Christian Köberl
-image: "/robot-launch.jpg"
+image: "./images/robot-launch.jpg"
 summary: "Busy OpenAI weeks: GPT-4.1, o3 and o4-mini, OpenAI Codex CLI and rumors about OpenAI buying Windsurf. Google launches Gemini 2.5 Flash, and PocketFlow is a minimalistic framework for building AI agents."
 ---
 

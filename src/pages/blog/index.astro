@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
 
 const posts = await getCollection("blog");
 posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -15,7 +16,11 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
           <a href={`/blog/${post.slug}`} class="post-preview">
             <article>
               {post.data.image && (
-                <img src={post.data.image} alt="" class="post-image" />
+                <Image
+                  src={import(`../../content/blog/${post.data.image}`)}
+                  alt=""
+                  class="post-image"
+                />
               )}
               <div class="post-content">
                 <h2>{post.data.title}</h2>
@@ -56,7 +61,9 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
     background: var(--background-body);
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+    transition:
+      transform 0.2s ease-in-out,
+      box-shadow 0.2s;
     display: block;
     text-decoration: none;
     color: inherit;
