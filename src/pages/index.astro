@@ -51,7 +51,10 @@ posts.sort((a, b) => b.data.pubDate?.valueOf() - a.data.pubDate?.valueOf());
     <div class="post-grid">
       {
         posts.map(post => (
-          <a href={`/blog/${post.slug}`} class="post-card">
+          <a
+            href={`/blog/${post.id.replace(/\.mdx?$/, "").toLowerCase()}`}
+            class="post-card"
+          >
             <article>
               <h3>{post.data.title}</h3>
               <p>{post.data.summary}</p>

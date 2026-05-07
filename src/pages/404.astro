@@ -1,0 +1,77 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404 - Page Not Found">
+  <div class="not-found">
+    <div class="error-code">404</div>
+    <h1>Page Not Found</h1>
+    <p>Sorry, the page you're looking for doesn't exist or has been moved.</p>
+    <div class="actions">
+      <a href="/" class="btn">Go Home</a>
+      <a href="/blog" class="btn btn-outline">Read the Blog</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 1rem;
+    gap: 1rem;
+  }
+
+  .error-code {
+    font-size: 8rem;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.15;
+    letter-spacing: -0.05em;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: var(--accent);
+    margin: 0;
+  }
+
+  p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    max-width: 40ch;
+    margin: 0;
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn {
+    padding: 0.6rem 1.4rem;
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+    background: var(--accent);
+    color: white;
+    transition: opacity 0.2s;
+  }
+
+  .btn:hover {
+    opacity: 0.85;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+  }
+</style>

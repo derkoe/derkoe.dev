@@ -14,7 +14,10 @@ posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
       {
         posts.map(post => {
           return (
-            <a href={`/blog/${post.slug}`} class="post-preview">
+            <a
+              href={`/blog/${post.id.replace(/\.mdx?$/, "").toLowerCase()}`}
+              class="post-preview"
+            >
               <article>
                 {post.data.image && (
                   <Image src={post.data.image} alt="" class="post-image" />
