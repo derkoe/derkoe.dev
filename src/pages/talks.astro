@@ -175,7 +175,14 @@ import Layout from "../layouts/Layout.astro";
 <style>
   .talks-container {
     margin: 0 auto;
-    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.025em;
   }
 
   .talks-list ul {
@@ -184,33 +191,48 @@ import Layout from "../layouts/Layout.astro";
   }
 
   .talks-list li {
-    margin-bottom: 3rem;
-    background: var(--gray-800);
-    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+    background: var(--background-body);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .talks-list li:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-light);
   }
 
   h2 {
-    margin: 0;
-    font-size: 1.4rem;
-    color: var(--gray-100);
+    margin: 0 0 0.75rem 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
   }
 
   .event-info {
-    margin: 0.5rem 0 1rem;
-    color: var(--gray-400);
+    margin: 0 0 1.25rem 0;
+    color: var(--text-light);
+    font-size: 0.875rem;
+    font-weight: 500;
   }
 
   .event-info a {
     color: var(--accent);
     text-decoration: none;
+    transition: color 0.2s ease;
   }
 
   .event-info a:hover {
+    color: var(--accent-hover);
     text-decoration: underline;
   }
 
   .links {
-    margin: 1rem 0 1.5rem;
+    margin: 0 0 1.5rem 0;
     display: flex;
     gap: 0.75rem;
     flex-wrap: wrap;
@@ -218,16 +240,19 @@ import Layout from "../layouts/Layout.astro";
 
   .button {
     display: inline-block;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.25rem;
     background: var(--accent);
     color: white;
     text-decoration: none;
-    border-radius: 0.25rem;
-    font-weight: 500;
-    transition: opacity 0.2s;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
   }
 
   .button:hover {
-    opacity: 0.8;
+    background: var(--accent-hover);
+    transform: translateY(-1px);
   }
 </style>
