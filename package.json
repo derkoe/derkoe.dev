@@ -9,8 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/netlify": "7.0.8",
-    "astro": "6.3.0",
+    "@astrojs/netlify": "7.0.10",
+    "astro": "6.3.7",
     "sharp": "0.34.5"
   },
   "devDependencies": {
