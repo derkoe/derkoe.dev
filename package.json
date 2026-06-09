@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/netlify": "7.0.10",
+    "@astrojs/rss": "^4.0.18",
     "astro": "6.3.7",
     "sharp": "0.34.5"
   },

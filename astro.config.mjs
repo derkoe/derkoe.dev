@@ -10,6 +10,6 @@ export default defineConfig({
       wrap: true,
     },
   },
-
+  site: "https://derkoe.dev",
   adapter: netlify(),
 });
