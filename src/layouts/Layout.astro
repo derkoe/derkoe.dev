@@ -5,7 +5,6 @@ interface Props {
 
 const { title = "Christian Köberl's Blog" } = Astro.props;
 import ThemeToggle from "../components/ThemeToggle.astro";
-import SocialLinks from "../components/SocialLinks.astro";
 ---
 
 <!doctype html>
@@ -64,7 +63,6 @@ import SocialLinks from "../components/SocialLinks.astro";
       <slot />
     </main>
     <footer>
-      <SocialLinks />
       <p>
         &copy; 2012-{new Date().getFullYear()} Christian Köberl. All rights reserved.
       </p>
