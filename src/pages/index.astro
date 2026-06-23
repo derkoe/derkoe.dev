@@ -6,51 +6,59 @@ import { Image } from "astro:assets";
 
 const posts = await getCollection("blog");
 posts.sort((a, b) => b.data.pubDate?.valueOf() - a.data.pubDate?.valueOf());
+const latestPosts = posts.slice(0, 6);
 ---
 
 <Layout>
-  <div class="hero">
-    <div class="hero-text">
-      <h1>Hi, I'm Kö!</h1>
-      <p>
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">Software Engineering · Cloud · AI</span>
+      <h1>Hi, I'm Kö</h1>
+      <p class="hero-lead">
         My name is Christian Köberl and I am a software engineer @ Porsche
         Informatik in Salzburg, Austria.
       </p>
-    </div>
-    <div class="hero-content">
-      <Image
-        src={derkoeLaughing}
-        alt="Christian Köberl laughing"
-        class="profile-image"
-        width={400}
-        height={600}
-      />
-      <div class="nav-cards">
-        <a href="/blog" class="nav-card">
-          <h2>Blog</h2>
-          <p>
-            Read my thoughts and experiences about software development, cloud
-            computing, and more.
-          </p>
-          <span class="card-arrow">→</span>
-        </a>
-        <a href="/talks" class="nav-card">
-          <h2>Talks</h2>
-          <p>
-            Watch my conference talks and presentations about various tech
-            topics.
-          </p>
-          <span class="card-arrow">→</span>
-        </a>
+      <div class="hero-actions">
+        <a href="/blog" class="hero-btn hero-btn-primary">Read the blog</a>
+        <a href="/talks" class="hero-btn hero-btn-secondary">Watch talks</a>
       </div>
     </div>
-  </div>
+    <div class="hero-panel">
+      <div class="image-frame">
+        <Image
+          src={derkoeLaughing}
+          alt="Christian Köberl laughing"
+          class="profile-image"
+          width={400}
+          height={600}
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="nav-cards">
+    <a href="/blog" class="nav-card">
+      <h2>Blog</h2>
+      <p>
+        Read my thoughts and experiences about software development, cloud
+        computing, and more.
+      </p>
+      <span class="card-arrow">→</span>
+    </a>
+    <a href="/talks" class="nav-card">
+      <h2>Talks</h2>
+      <p>
+        Watch my conference talks and presentations about various tech topics.
+      </p>
+      <span class="card-arrow">→</span>
+    </a>
+  </section>
 
   <section class="blog-preview">
     <h2>Latest Blog Posts</h2>
     <div class="post-grid">
       {
-        posts.map(post => (
+        latestPosts.map(post => (
           <a
             href={`/blog/${post.id.replace(/\.mdx?$/, "").toLowerCase()}`}
             class="post-card"
@@ -69,70 +77,140 @@ posts.sort((a, b) => b.data.pubDate?.valueOf() - a.data.pubDate?.valueOf());
 
 <style>
   .hero {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border-radius: 24px;
+    background:
+      radial-gradient(circle at 15% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 55%),
+      var(--background-body);
+    box-shadow:
+      0 20px 40px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .hero-copy {
     display: flex;
     flex-direction: column;
-    margin-bottom: 3rem;
+    gap: 1rem;
   }
 
-  .hero-text {
-    text-align: center;
-    padding: 2rem;
-  }
-
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-  }
-
-  @media (min-width: 768px) {
-    .hero-content {
-      flex-direction: row-reverse;
-      gap: 2rem;
-      align-items: flex-start;
-    }
-
-    .hero-text {
-      text-align: left;
-    }
-
-    .profile-image {
-      flex: 0 0 400px;
-    }
-  }
-
-  .profile-image {
-    border-radius: 5%;
-    object-fit: cover;
-    margin: 0 auto 2rem;
-    max-width: 100%; /* Change to ensure image does not exceed viewport width */
-    height: auto;
+  .eyebrow {
+    display: inline-flex;
+    width: fit-content;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
   }
 
   h1 {
-    font-size: 2.5rem;
+    margin: 0;
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
     color: var(--accent);
-    margin: 0.5rem 0;
+  }
+
+  .hero-lead {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 62ch;
+    color: var(--text);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 1.1rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .hero-btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .hero-btn-primary {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+
+  :global(:root.dark) .hero-btn-primary {
+    color: #121212;
+  }
+
+  .hero-btn-secondary {
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    color: var(--text);
+  }
+
+  .hero-panel {
+    display: flex;
+    justify-content: center;
+  }
+
+  .image-frame {
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 0.6rem;
+    background:
+      linear-gradient(var(--background-body), var(--background-body)) padding-box,
+      linear-gradient(135deg, color-mix(in srgb, var(--accent) 60%, transparent), transparent) border-box;
+    border: 1px solid transparent;
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .profile-image {
+    display: block;
+    border-radius: 14px;
+    object-fit: cover;
+    max-width: min(100%, 420px);
+    height: auto;
   }
 
   .nav-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   .nav-card {
-    background: var(--background-body);
+    background: color-mix(in srgb, var(--background-body) 92%, transparent);
     padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
     text-decoration: none;
     position: relative;
-    transition: transform 0.2s;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
   }
 
   .nav-card:hover {
     transform: translateY(-4px);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12);
   }
 
   .nav-card h2 {
@@ -148,27 +226,30 @@ posts.sort((a, b) => b.data.pubDate?.valueOf() - a.data.pubDate?.valueOf());
   }
 
   .card-arrow {
-    float: right;
-    font-size: 1.5rem;
+    position: absolute;
+    right: 1.2rem;
+    bottom: 1.2rem;
+    font-size: 1.25rem;
     color: var(--accent);
   }
 
   .blog-preview {
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
 
   .post-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
   }
 
   .post-card {
-    background: var(--background-body);
+    background: color-mix(in srgb, var(--background-body) 92%, transparent);
     padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
     text-decoration: none;
     display: block;
     transition:
@@ -178,7 +259,7 @@ posts.sort((a, b) => b.data.pubDate?.valueOf() - a.data.pubDate?.valueOf());
 
   .post-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
   }
 
   .post-card article {
@@ -190,6 +271,7 @@ posts.sort((a, b) => b.data.pubDate?.valueOf() - a.data.pubDate?.valueOf());
   .post-card h3 {
     margin: 0;
     color: var(--accent);
+    line-height: 1.3;
   }
 
   .post-card p {
@@ -201,10 +283,14 @@ posts.sort((a, b) => b.data.pubDate?.valueOf() - a.data.pubDate?.valueOf());
   .read-more {
     color: var(--accent);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
   }
 
-  .read-more:hover {
-    color: var(--accent);
+  @media (min-width: 900px) {
+    .hero {
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 2.5rem;
+    }
   }
 </style>
