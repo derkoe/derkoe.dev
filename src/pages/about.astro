@@ -85,28 +85,38 @@ import { socialLinks } from "../config";
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    margin: 0 auto 2rem auto;
+    margin: 0 auto 3rem auto;
+    box-shadow: var(--shadow-lg);
   }
 
   .about-content {
     background: var(--background-body);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
   }
 
   h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
     color: var(--accent);
     margin-top: 0;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.025em;
   }
 
   h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
     color: var(--accent);
-    margin-top: 2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
   }
 
   li {
     padding: 0.4rem 0;
+    line-height: 1.6;
   }
 
   li:last-child {
@@ -116,5 +126,17 @@ import { socialLinks } from "../config";
   p {
     line-height: 1.6;
     color: var(--text);
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-weight: 500;
+  }
+
+  a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
   }
 </style>
